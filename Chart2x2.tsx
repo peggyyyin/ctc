@@ -72,17 +72,17 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   
         // Draw quadrant labels (inside the border)
         ctx.textBaseline = "top"; // Position at the top
-        ctx.fillText("Bridge Builder", canvas.width * 0.5, offsetY + 20);
-        ctx.fillText("Trail Guide", canvas.width * 0.5, offsetY + 20);
+        ctx.fillText("Bridge Builder", canvas.width * 0.65, offsetY + 20);
+        ctx.fillText("Trail Guide", canvas.width * 0.35, offsetY + 20);
         ctx.textBaseline = "bottom";
         ctx.fillText(
           "Map Maker",
-          canvas.width * 0.5,
+          canvas.width * 0.65,
           offsetY + borderHeight - 20
         );
         ctx.fillText(
           "Transport Helicopter",
-          canvas.width * 0.5,
+          canvas.width * 0.35,
           offsetY + borderHeight - 20
         );
   

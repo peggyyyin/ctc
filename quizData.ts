@@ -3,7 +3,7 @@ export const questions = [
     id: 1,
     question: "How would you describe your primary approach to supporting young people?",
     options: [
-      { id: 'A', text: "I'll personally walk alongside you and help navigate whatever challenges arise." },
+      { id: 'A', text: "We'll personally walk alongside you and help navigate whatever challenges arise." },
       { id: 'B', text: "We've built lasting connections between education and employers to ensure your success." },
       { id: 'C', text: "We'll analyze your data and suggest personalized pathways based on evidence." },
       { id: 'D', text: "We offer specific programs and training to help you reach defined goals." }

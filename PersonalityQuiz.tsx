@@ -123,7 +123,7 @@ export default function PersonalityQuiz() {
           <CardTitle className="text-xl sm:text-2xl text-center">{orgName}</CardTitle>
         </CardHeader>
         <CardContent className="mt-4 p-4 sm:p-6" id="result-content">
-          <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a...</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a</h2>
           <div className="flex justify-center mb-6">
             <Chart2x2 xSum={xSum} ySum={ySum} />
           </div>

@@ -88,10 +88,11 @@ body {
 }
 
 .card {
-  background-color: var(--card);
-  color: var(--card-foreground);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white; /* Explicitly set the card's background to white */
+  color: black; /* Set text color to black for contrast */
+  border-radius: 0.5rem; /* Rounded corners, adjustable as needed */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for subtle separation */
+  padding: 1rem; /* Space inside the card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for elevation */
 }
+

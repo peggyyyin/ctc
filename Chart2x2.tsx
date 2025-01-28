@@ -32,22 +32,22 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         ctx.font = "bold 14px Rubik"
         ctx.textAlign = "center"
 
-        // X-axis labels
-        ctx.fillText("RELATIONAL", canvas.width * 0.25, canvas.height / 2 - 10)
-        ctx.fillText("INSTITUTIONAL", canvas.width * 0.75, canvas.height / 2 - 10)
-
         // Y-axis labels
         ctx.save()
-        ctx.translate(canvas.width / 2 + 20, canvas.height * 0.25)
+        ctx.translate(20, canvas.height / 4)
         ctx.rotate(-Math.PI / 2)
         ctx.fillText("FLEXIBLE", 0, 0)
         ctx.restore()
 
         ctx.save()
-        ctx.translate(canvas.width / 2 + 20, canvas.height * 0.75)
+        ctx.translate(20, (3 * canvas.height) / 4)
         ctx.rotate(-Math.PI / 2)
         ctx.fillText("FIXED", 0, 0)
         ctx.restore()
+
+        // X-axis labels
+        ctx.fillText("RELATIONAL", canvas.width / 4, canvas.height - 30)
+        ctx.fillText("INSTITUTIONAL", (3 * canvas.width) / 4, canvas.height - 30)
 
         // Draw quadrant labels
         ctx.fillText("Bridge Builder", canvas.width * 0.75, 20)

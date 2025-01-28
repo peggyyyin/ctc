@@ -6,9 +6,10 @@ import { Label } from "@/components/ui/label"
 
 interface OrganizationInfoPageProps {
   onSubmit: (name: string, contact: string) => void
+  onBack: () => void
 }
 
-export default function OrganizationInfoPage({ onSubmit }: OrganizationInfoPageProps) {
+export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationInfoPageProps) {
   const [name, setName] = React.useState("")
   const [contact, setContact] = React.useState("")
 
@@ -48,14 +49,10 @@ export default function OrganizationInfoPage({ onSubmit }: OrganizationInfoPageP
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button
-            type="button"
-            onClick={() => window.history.back()}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-700"
-          >
+          <Button type="button" onClick={onBack} className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300">
             Back
           </Button>
-          <Button type="submit" className="bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">
+          <Button type="submit" className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">
             Continue to Quiz
           </Button>
         </CardFooter>

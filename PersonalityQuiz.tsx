@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
@@ -12,7 +12,6 @@ import Chart2x2 from "./Chart2x2"
 import StartPage from "./StartPage"
 import OrganizationInfoPage from "./OrganizationInfoPage"
 import { generatePDF } from "./utils/generatePDF"
-import { saveToSheet } from "./app/actions"
 
 export default function PersonalityQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(-2) // -2 for StartPage, -1 for OrganizationInfoPage
@@ -33,27 +32,24 @@ export default function PersonalityQuiz() {
     setCurrentQuestion(0)
   }
 
-  const handlePrevious = () => {
+  const handleBack = () => {
     if (currentQuestion > 0) {
-      const prevAnswer = answerState[currentQuestion - 1]
-      updateSums(prevAnswer, true)
       setCurrentQuestion(currentQuestion - 1)
+    } else if (currentQuestion === 0) {
+      setCurrentQuestion(-1) // Go back to Organization Info
+    } else if (currentQuestion === -1) {
+      setCurrentQuestion(-2) // Go back to Start Page
+    } else if (showResult) {
+      setShowResult(false)
+      setCurrentQuestion(questions.length - 1) // Go back to last question
     }
   }
 
-  const handleNext = async () => {
+  const handleNext = () => {
     if (answerState[currentQuestion]) {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1)
       } else {
-        const result = calculateResult()
-        await saveToSheet({
-          organizationName: orgName,
-          contactInfo: orgContact,
-          result: results[result].title,
-          xSum,
-          ySum,
-        })
         setShowResult(true)
       }
     }
@@ -115,7 +111,7 @@ export default function PersonalityQuiz() {
   }
 
   if (currentQuestion === -1) {
-    return <OrganizationInfoPage onSubmit={handleOrgInfoSubmit} />
+    return <OrganizationInfoPage onSubmit={handleOrgInfoSubmit} onBack={handleBack} />
   }
 
   if (showResult) {
@@ -127,7 +123,7 @@ export default function PersonalityQuiz() {
           <CardTitle className="text-xl sm:text-2xl text-center">{orgName}</CardTitle>
         </CardHeader>
         <CardContent className="mt-4 p-4 sm:p-6" id="result-content">
-          <h2 className="text-2xl font-bold text-center mb-6">Your organization is a...</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a...</h2>
           <div className="flex justify-center mb-6">
             <Chart2x2 xSum={xSum} ySum={ySum} />
           </div>
@@ -184,11 +180,11 @@ export default function PersonalityQuiz() {
       </CardContent>
       <CardFooter className="flex justify-between gap-4">
         <Button
-          onClick={handlePrevious}
-          disabled={currentQuestion === 0}
+          onClick={handleBack}
+          disabled={currentQuestion === -2}
           className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300"
         >
-          Previous
+          Back
         </Button>
         <Button
           onClick={handleNext}

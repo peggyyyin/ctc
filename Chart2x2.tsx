@@ -18,7 +18,7 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
   
         // Set font to sans-serif for everything
-        ctx.font = "bold 12px Arial, Helvetica, sans-serif";
+        ctx.font = "bold 10px Arial, Helvetica, sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
   
@@ -72,25 +72,25 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   
         // Draw quadrant labels (inside the border)
         ctx.textBaseline = "top"; // Position at the top
-        ctx.fillText("Bridge Builder", canvas.width * 0.65, offsetY + 20);
-        ctx.fillText("Trail Guide", canvas.width * 0.35, offsetY + 20);
+        ctx.fillText("Bridge Builder", canvas.width * 0.75, offsetY + 20);
+        ctx.fillText("Trail Guide", canvas.width * 0.25, offsetY + 20);
         ctx.textBaseline = "bottom";
         ctx.fillText(
           "Map Maker",
-          canvas.width * 0.65,
+          canvas.width * 0.75,
           offsetY + borderHeight - 20
         );
         ctx.fillText(
           "Transport Helicopter",
-          canvas.width * 0.35,
+          canvas.width * 0.25,
           offsetY + borderHeight - 20
         );
   
         // Plot result
         ctx.fillStyle = "#40c7cc";
         ctx.beginPath();
-        const x = offsetX + (xSum / 12 + 1) * (borderWidth / 2) * .85;
-        const y = offsetY + (1 - ySum / 12) * (borderHeight / 2) * .85;
+        const x = (offsetX + (xSum / 12 + 1) * (borderWidth / 2)) * .85;
+        const y = (offsetY + (1 - ySum / 12) * (borderHeight / 2)) * .85;
         ctx.arc(x, y, 6, 0, 2 * Math.PI);
         ctx.fill();
       }

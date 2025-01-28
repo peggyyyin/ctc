@@ -15,13 +15,16 @@ export default function StartPage({ onStart, onBack }: StartPageProps) {
       </CardHeader>
       <CardContent className="mt-4 sm:mt-6 px-4 sm:px-8">
         <div className="flex justify-center mb-4 sm:mb-6">
-          <video
-            src="/intro_video.mp4"
-            className="rounded-lg shadow-md w-full max-h-[400px] object-contain"
-            controls
-            autoPlay
-            muted
-            playsInline
+          <iframe
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/pJihiXcffR8?si=c-epPombzD83nzAM"
+            title="Crossing the Canyon Quiz Introduction"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-lg shadow-md"
           />
         </div>
         <p className="text-base sm:text-lg text-left mb-4 sm:mb-6">

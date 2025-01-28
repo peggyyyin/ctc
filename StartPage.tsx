@@ -19,7 +19,7 @@ export default function StartPage({ onStart }: StartPageProps) {
             controls
             poster="/placeholder.svg?height=400&width=1200"
           >
-            <source src="/placeholder-video.mp4" type="video/mp4" />
+            <source src="/intro_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

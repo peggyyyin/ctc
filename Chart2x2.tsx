@@ -1,73 +1,101 @@
-import type React from "react"
-import { useEffect, useRef } from "react"
+import type React from "react";
+import { useEffect, useRef } from "react";
 
 interface Chart2x2Props {
-  xSum: number
-  ySum: number
+  xSum: number;
+  ySum: number;
 }
 
 const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (canvasRef.current) {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext("2d")
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext("2d");
       if (ctx) {
         // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw grid
-        ctx.strokeStyle = "#152e65"
-        ctx.lineWidth = 2
-        ctx.beginPath()
-        ctx.moveTo(canvas.width / 2, 0)
-        ctx.lineTo(canvas.width / 2, canvas.height)
-        ctx.moveTo(0, canvas.height / 2)
-        ctx.lineTo(canvas.width, canvas.height / 2)
-        ctx.stroke()
+        // Set font to sans-serif for everything
+        ctx.font = "bold 12px Arial, Helvetica, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
 
-        // Draw axis labels
-        ctx.fillStyle = "#000000"
-        ctx.font = "bold 14px Rubik"
-        ctx.textAlign = "center"
+        // Draw inset border (-20px on all sides)
+        const insetPadding = 20;
+        ctx.strokeStyle = "#152e65";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(
+          insetPadding, // X-coordinate
+          insetPadding, // Y-coordinate
+          canvas.width - 2 * insetPadding, // Width
+          canvas.height - 2 * insetPadding // Height
+        );
+
+        // Draw grid (inside the border)
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, insetPadding); // Y-axis (top to bottom)
+        ctx.lineTo(canvas.width / 2, canvas.height - insetPadding);
+        ctx.moveTo(insetPadding, canvas.height / 2); // X-axis (left to right)
+        ctx.lineTo(canvas.width - insetPadding, canvas.height / 2);
+        ctx.stroke();
+
+        // Draw axis labels (outside the border)
+        ctx.fillStyle = "#000000";
 
         // Y-axis labels
-        ctx.save()
-        ctx.translate(-10, canvas.height / 4)
-        ctx.rotate(-Math.PI / 2)
-        ctx.fillText("FLEXIBLE", 0, 0)
-        ctx.restore()
+        ctx.save();
+        ctx.translate(insetPadding - 10, canvas.height / 4); // FLEXIBLE (left of the Y-axis)
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText("FLEXIBLE", 0, 0);
+        ctx.restore();
 
-        ctx.save()
-        ctx.translate(-10, (3 * canvas.height) / 4)
-        ctx.rotate(-Math.PI / 2)
-        ctx.fillText("FIXED", 0, 0)
-        ctx.restore()
+        ctx.save();
+        ctx.translate(insetPadding - 10, (3 * canvas.height) / 4); // FIXED (left of the Y-axis)
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText("FIXED", 0, 0);
+        ctx.restore();
 
         // X-axis labels
-        ctx.fillText("RELATIONAL", canvas.width / 4, canvas.height + 10)
-        ctx.fillText("INSTITUTIONAL", (3 * canvas.width) / 4, canvas.height + 10)
+        ctx.fillText("RELATIONAL", canvas.width / 4, canvas.height - insetPadding + 14); // RELATIONAL (below X-axis)
+        ctx.fillText(
+          "INSTITUTIONAL",
+          (3 * canvas.width) / 4,
+          canvas.height - insetPadding + 14
+        ); // INSTITUTIONAL (below X-axis)
 
-        // Draw quadrant labels
-        ctx.fillText("Bridge Builder", canvas.width * 0.75, 20)
-        ctx.fillText("Trail Guide", canvas.width * 0.25, 20)
-        ctx.fillText("Map Maker", canvas.width * 0.25, canvas.height - 10)
-        ctx.fillText("Transport Helicopter", canvas.width * 0.75, canvas.height - 10)
+        // Draw quadrant labels (inside the border)
+        ctx.textBaseline = "top"; // Position at the top
+        ctx.fillText("Bridge Builder", canvas.width * 0.75, insetPadding + 20);
+        ctx.fillText("Trail Guide", canvas.width * 0.25, insetPadding + 20);
+        ctx.textBaseline = "bottom";
+        ctx.fillText("Map Maker", canvas.width * 0.25, canvas.height - insetPadding - 20);
+        ctx.fillText(
+          "Transport Helicopter",
+          canvas.width * 0.75,
+          canvas.height - insetPadding - 20
+        );
 
         // Plot result
-        ctx.fillStyle = "#40c7cc"
-        ctx.beginPath()
-        const x = (xSum / 12 + 1) * (canvas.width / 2)
-        const y = (1 - ySum / 12) * (canvas.height / 2)
-        ctx.arc(x, y, 8, 0, 2 * Math.PI)
-        ctx.fill()
+        ctx.fillStyle = "#40c7cc";
+        ctx.beginPath();
+        const x = (xSum / 12 + 1) * (canvas.width / 2);
+        const y = (1 - ySum / 12) * (canvas.height / 2);
+        ctx.arc(x, y, 8, 0, 2 * Math.PI);
+        ctx.fill();
       }
     }
-  }, [xSum, ySum])
+  }, [xSum, ySum]);
 
-  return <canvas ref={canvasRef} width={300} height={300} className="border-2 border-primary rounded-lg" />
-}
+  return (
+    <canvas
+      ref={canvasRef}
+      width={400} // Canvas size
+      height={400}
+      className="border-2 border-white rounded-lg"
+    />
+  );
+};
 
-export default Chart2x2
-
+export default Chart2x2;

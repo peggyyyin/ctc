@@ -21,7 +21,7 @@ export default function PersonalityQuiz() {
   const [ySum, setYSum] = useState(0)
   const [orgName, setOrgName] = useState("")
   const [orgContact, setOrgContact] = useState("")
-
+  
   const handleStart = () => {
     setCurrentQuestion(-1)
   }
@@ -114,6 +114,11 @@ export default function PersonalityQuiz() {
     return <OrganizationInfoPage onSubmit={handleOrgInfoSubmit} onBack={handleBack} />
   }
 
+  // if (currentQuestion === -2) {
+  //   return <StartPage onStart={handleStart} onBack={handleBack} />;
+  // }
+  
+
   if (showResult) {
     const result = calculateResult()
     const resultData = results[result]
@@ -123,7 +128,7 @@ export default function PersonalityQuiz() {
           <CardTitle className="text-xl sm:text-2xl text-center">{orgName}</CardTitle>
         </CardHeader>
         <CardContent className="mt-4 p-4 sm:p-6" id="result-content">
-          <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a...</h2>
           <div className="flex justify-center mb-6">
             <Chart2x2 xSum={xSum} ySum={ySum} />
           </div>

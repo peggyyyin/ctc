@@ -1,5 +1,5 @@
 import * as React from "react"
-import '../app/globals.css'
+import "@app/globals.css"
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<

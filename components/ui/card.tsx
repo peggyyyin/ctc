@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import './globals.css'
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -24,9 +24,9 @@ const CardHeader = React.forwardRef<
   <div
     ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
-    style={{
-      backgroundColor: "white",
-    }}
+    // style={{
+    //   backgroundColor: "white",
+    // }}
     {...props}
   />
 ))

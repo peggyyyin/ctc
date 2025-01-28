@@ -16,11 +16,8 @@ export default function StartPage({ onStart }: StartPageProps) {
         <div className="flex justify-center mb-4 sm:mb-6">
           <video
             className="rounded-lg shadow-md w-full aspect-video"
-            controls
-            poster="/placeholder.svg?height=400&width=1200"
           >
             <source src="/intro_video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
         </div>
         <p className="text-base sm:text-lg text-left mb-4 sm:mb-6">

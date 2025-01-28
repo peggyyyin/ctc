@@ -92,3 +92,96 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 219 67% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 190 70% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 219 67% 24%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 190 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 219 67% 24%;
+    --input: 219 67% 24%;
+    --ring: 190 70% 45%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 219 67% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 184 67% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 219 67% 24%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 184 67% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 219 67% 24%;
+    --input: 219 67% 24%;
+    --ring: 184 67% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-rubik;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Rubik', sans-serif;
+}
+
+.card {
+  background-color: white; /* Explicitly set the card's background to white */
+  color: black; /* Set text color to black for contrast */
+  border-radius: 0.5rem; /* Rounded corners, adjustable as needed */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Light border for subtle separation */
+  padding: 1rem; /* Space inside the card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for elevation */
+}
+

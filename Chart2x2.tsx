@@ -89,8 +89,8 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         // Plot result
         ctx.fillStyle = "#40c7cc";
         ctx.beginPath();
-        const x = (offsetX + (xSum / 12 + 1) * (borderWidth / 2)) * .85;
-        const y = (offsetY + (1 - ySum / 12) * (borderHeight / 2)) * .85;
+        const x = (offsetX + (xSum / 12 + 1) * (borderWidth / 2)) * .7;
+        const y = (offsetY + (1 - ySum / 12) * (borderHeight / 2)) * .7;
         ctx.arc(x, y, 6, 0, 2 * Math.PI);
         ctx.fill();
       }

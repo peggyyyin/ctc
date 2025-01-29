@@ -90,7 +90,7 @@ const Card = React.forwardRef<
     ref={ref}
     className={cn(
       "rounded-lg border bg-white text-black shadow-lg p-6", // Ensure white background, black text, and soft shadow
-      className
+    )}
     {...props}
   />
 ));

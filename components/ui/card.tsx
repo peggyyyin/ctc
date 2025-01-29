@@ -89,8 +89,16 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-transparent text-black shadow-lg", // Ensure white background, black text, and soft shadow
+      "rounded-lg border-white bg-white text-black shadow-lg", // Ensure white background, black text, and soft shadow
     )}
+    style={{
+      width: "85vw", // 85% of viewport width
+      height: "80vh", // 80% of viewport height
+      position: "absolute", // Absolute positioning for centering
+      top: "50%", // Center vertically
+      left: "50%", // Center horizontally
+      transform: "translate(-50%, -50%)", // Ensure true centering
+    }}
     {...props}
   />
 ));

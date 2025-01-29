@@ -9,7 +9,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-white text-black shadow-lg p-6 flex flex-col justify-between",
+      "rounded-lg border-white bg-white text-black shadow-lg flex flex-col justify-between", // Flexbox ensures spacing
       className
     )}
     style={{
@@ -24,18 +24,6 @@ const Card = React.forwardRef<
   />
 ));
 Card.displayName = "Card";
-
-const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -53,6 +41,18 @@ const CardHeader = React.forwardRef<
   />
 ));
 CardHeader.displayName = "CardHeader";
+
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm text-gray-600", className)}
+    {...props}
+  />
+));
+CardDescription.displayName = "CardDescription";
 
 const CardTitle = React.forwardRef<
   HTMLDivElement,
@@ -75,7 +75,7 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex-grow p-6 space-y-4 overflow-auto", className)} // flex-grow ensures content expands the card
+    className={cn("flex-grow p-6 space-y-4 overflow-auto", className)} // flex-grow makes it fill available space
     {...props}
   />
 ));
@@ -87,10 +87,10 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center justify-between p-4 border-t mt-auto", className)} // Ensures the footer sticks to the bottom
+    className={cn("flex items-center justify-between p-4 border-t mt-auto", className)}
     {...props}
   />
 ));
 CardFooter.displayName = "CardFooter";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardContent };
+export { Card, CardHeader, CardFooter, CardTitle, CardContent, CardDescription};

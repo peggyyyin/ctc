@@ -109,7 +109,8 @@ const CardHeader = React.forwardRef<
     ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
     style={{
-      backgroundColor: "#152e65"    
+      backgroundColor: "#152e65",
+   
     }}
     {...props}
   />
@@ -126,6 +127,9 @@ const CardTitle = React.forwardRef<
       "text-2xl font-semibold leading-none tracking-tight",
       className
     )}
+    style={{
+      color: "white",
+    }}
     {...props}
   />
 ))
@@ -139,6 +143,9 @@ const CardDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
+    style={{
+      color: "black",
+    }}
   />
 ))
 CardDescription.displayName = "CardDescription"

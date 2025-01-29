@@ -142,7 +142,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} 
+  <div ref={ref} className={cn("p-0 pt-0", className)} 
 
   style={{
       backgroundColor: "White", // Dark Blue Header Background

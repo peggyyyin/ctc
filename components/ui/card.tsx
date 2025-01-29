@@ -22,8 +22,10 @@ const Card = React.forwardRef<
     }}
     {...props}
   />
+));
+Card.displayName = "Card";
 
-  const CardDescription = React.forwardRef<
+const CardDescription = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -34,9 +36,6 @@ const Card = React.forwardRef<
   />
 ))
 CardDescription.displayName = "CardDescription"
-
-));
-Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,

@@ -89,7 +89,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-white text-black shadow-lg p-6", // Ensure white background, black text, and soft shadow
+      "rounded-lg border bg-transparent text-black shadow-lg", // Ensure white background, black text, and soft shadow
     )}
     {...props}
   />
@@ -142,7 +142,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-0 pt-0", className)} 
+  <div ref={ref} className={cn("p-6 pt-0", className)} 
 
   style={{
       backgroundColor: "White", // Dark Blue Header Background

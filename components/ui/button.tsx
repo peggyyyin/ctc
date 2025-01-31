@@ -71,7 +71,7 @@ const buttonVariants = cva(
         primary:
           "bg-[#40c7cc] text-white hover:bg-[#36b1b5]", // Teal Button
         secondary:
-          "bg-gray-500 text-black hover:bg-gray-700", // Gray Secondary Button
+          "bg-gray-100 text-black hover:bg-gray-300", // Gray Secondary Button
         outline:
           "border border-gray-400 bg-white text-black hover:bg-gray-100",
         ghost: "hover:bg-gray-200",

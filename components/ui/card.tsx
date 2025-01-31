@@ -50,6 +50,8 @@ const CardDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-gray-600", className)}
     {...props}
+    style={{
+      color: "white" }}
   />
 ));
 CardDescription.displayName = "CardDescription";
@@ -89,6 +91,8 @@ const CardFooter = React.forwardRef<
     ref={ref}
     className={cn("flex items-center justify-between p-4 border-t mt-auto", className)}
     {...props}
+    style={{
+      color: "white" }}
   />
 ));
 CardFooter.displayName = "CardFooter";

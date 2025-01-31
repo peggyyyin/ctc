@@ -19,7 +19,7 @@ const Card = React.forwardRef<
       display: "flex",
       flexDirection: "column",
       margin: "auto", // Centers it horizontally
-      color: "white",
+      backgroundColor: "white",
     }}
     {...props}
   />
@@ -51,8 +51,6 @@ const CardDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-gray-600", className)}
     {...props}
-    style={{
-      color: "white" }}
   />
 ));
 CardDescription.displayName = "CardDescription";

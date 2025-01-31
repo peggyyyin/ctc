@@ -29,8 +29,8 @@ export const generatePDF = async (elementId: string) => {
       const marginBottom = 10;
     
       // Use the image's natural size
-      const logoWidth = logo.naturalWidth / 12; // Scale down if needed
-      const logoHeight = logo.naturalHeight / 12; // Scale down if needed
+      const logoWidth = logo.naturalWidth / 40; // Scale down if needed
+      const logoHeight = logo.naturalHeight / 40; // Scale down if needed
     
       const x = imgWidth - logoWidth - marginRight;
       const y = pageHeight - logoHeight - marginBottom;

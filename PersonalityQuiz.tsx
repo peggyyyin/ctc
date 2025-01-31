@@ -129,10 +129,10 @@ export default function PersonalityQuiz() {
         </CardHeader>
         <CardContent className="mt-4 p-4 sm:p-6" id="result-content">
           <h2 className="text-2xl font-bold text-center mb-6">Your organization is mostly a...</h2>
+          <h3 className="text-xl font-semibold text-center mb-4">{resultData.title}</h3>
           <div className="flex justify-center mb-6">
             <Chart2x2 xSum={xSum} ySum={ySum} />
           </div>
-          <h3 className="text-xl font-semibold text-center mb-4">{resultData.title}</h3>
           <p className="mb-6 text-center text-base text-left sm:text-lg">{resultData.description}</p>
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-4">

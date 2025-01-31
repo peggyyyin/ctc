@@ -77,8 +77,10 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex-grow p-6 space-y-4 overflow-auto", className)} // flex-grow makes it fill available space
+    className={cn("flex-grow p-6 space-y-4 overflow-auto h1", className)} // flex-grow makes it fill available space
     {...props}
+    style={{
+      color: "white" }}
   />
 ));
 CardContent.displayName = "CardContent";
@@ -89,7 +91,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center justify-between p-4 border-t mt-auto", className)}
+    className={cn("flex items-center justify-between p-4 mt-auto", className)}
     {...props}
     style={{
       color: "white" }}

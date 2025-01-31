@@ -62,7 +62,7 @@ const CardTitle = React.forwardRef<
   <h2
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight text-white text-center",
+      "text-5xl flex-grow text-white text-center text-lg font-semibold", //leading-none tracking-tight text-white text-center
       className
     )}
     {...props}
@@ -76,7 +76,7 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-5xl font-semibold flex-grow text-white text-center", className)} // flex-grow makes it fill available space flex-grow p-6 space-y-4 overflow-auto h1
+    className={cn("flex-grow p-6 space-y-4 overflow-auto", className)} // flex-grow makes it fill available space  h1
     {...props}
   />
 ));

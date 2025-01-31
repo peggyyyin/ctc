@@ -1,6 +1,5 @@
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-import Image from "next/image"; // Ensuring Next.js compatibility
+import { jsPDF } from "jspdf";
 
 export const generatePDF = async (elementId: string) => {
   const element = document.getElementById(elementId);
@@ -21,17 +20,17 @@ export const generatePDF = async (elementId: string) => {
     // Add the main content to the PDF
     pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, imgWidth, imgHeight);
 
-    // Load and add the TFA logo
-    const logo = new Image();
-    logo.src = "/TFA_logo.png"; // Ensure the file is in `public/` folder
+    // ✅ Load and add the TFA logo correctly
+    const logo = new window.Image(); // Ensures TypeScript compatibility
+    logo.src = "/TFA_logo.png"; // Make sure it's in `public/`
 
     logo.onload = function () {
-      const logoWidth = 40; // Adjust width
-      const logoHeight = 20; // Adjust height
+      const logoWidth = 40;
+      const logoHeight = 20;
       const marginRight = 10;
       const marginBottom = 10;
 
-      const x = imgWidth - logoWidth - marginRight; // Position logo in the bottom-right
+      const x = imgWidth - logoWidth - marginRight;
       const y = pageHeight - logoHeight - marginBottom;
 
       pdf.addImage(logo, "PNG", x, y, logoWidth, logoHeight);
@@ -41,8 +40,6 @@ export const generatePDF = async (elementId: string) => {
     console.error("Error generating PDF:", error);
   }
 };
-
-
 
 // export const generatePDF = async (elementId: string) => {
 //   const element = document.getElementById(elementId)

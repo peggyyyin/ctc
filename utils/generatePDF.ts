@@ -12,8 +12,8 @@ export const generatePDF = async (elementId: string) => {
       logging: false,
     });
 
-    const imgWidth = 210; // A4 width in mm
-    const pageHeight = 297; // A4 height in mm
+    const imgWidth = 105; // A4 width in mm
+    const pageHeight = 148; // A4 height in mm
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
     const pdf = new jsPDF("p", "mm", "a4");
 
@@ -25,11 +25,13 @@ export const generatePDF = async (elementId: string) => {
     logo.src = "/TFA_logo.png"; // Make sure it's in `public/`
 
     logo.onload = function () {
-      const logoWidth = 40;
-      const logoHeight = 20;
       const marginRight = 10;
       const marginBottom = 10;
-
+    
+      // Use the image's natural size
+      const logoWidth = logo.naturalWidth / 4; // Scale down if needed
+      const logoHeight = logo.naturalHeight / 4; // Scale down if needed
+    
       const x = imgWidth - logoWidth - marginRight;
       const y = pageHeight - logoHeight - marginBottom;
 

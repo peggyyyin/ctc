@@ -12,28 +12,40 @@ export const generatePDF = async (elementId: string) => {
       logging: false,
     });
 
-    const imgWidth = 210; // A4 width in mm
+    const pageWidth = 210; // A4 width in mm
     const pageHeight = 297; // A4 height in mm
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    const margin = 25.4; // 1 inch margin in mm
+
+    // Calculate content dimensions considering 1-inch margins
+    const contentWidth = pageWidth - 2 * margin;
+    const contentHeight = pageHeight - 2 * margin;
+
+    // Adjust image dimensions based on content size
+    const imgHeight = (canvas.height * contentWidth) / canvas.width;
     const pdf = new jsPDF("p", "mm", "a4");
 
-    // Add the main content to the PDF
-    pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, imgWidth, imgHeight);
+    // Add the main content with margins
+    pdf.addImage(
+      canvas.toDataURL("image/png"),
+      "PNG",
+      margin,
+      margin,
+      contentWidth,
+      imgHeight
+    );
 
     // ✅ Load and add the TFA logo correctly
     const logo = new window.Image(); // Ensures TypeScript compatibility
-    logo.src = "/TFA_logo.png"; // Make sure it's in `public/`
+    logo.src = "/TFA_logo.png"; // Ensure it's in `public/`
 
     logo.onload = function () {
-      const marginRight = 10;
-      const marginBottom = 10;
-    
       // Use the image's natural size
-      const logoWidth = logo.naturalWidth / 200; // Scale down if needed
-      const logoHeight = logo.naturalHeight / 200; // Scale down if needed
-    
-      const x = imgWidth - logoWidth - marginRight;
-      const y = pageHeight - logoHeight - marginBottom;
+      const logoWidth = logo.naturalWidth / 200; // Adjust scaling as needed
+      const logoHeight = logo.naturalHeight / 200; // Adjust scaling as needed
+
+      // Position logo with respect to the margin
+      const x = pageWidth - logoWidth - margin;
+      const y = pageHeight - logoHeight - margin;
 
       pdf.addImage(logo, "PNG", x, y, logoWidth, logoHeight);
       pdf.save("crossing-the-canyon-result.pdf");
@@ -42,26 +54,3 @@ export const generatePDF = async (elementId: string) => {
     console.error("Error generating PDF:", error);
   }
 };
-
-// export const generatePDF = async (elementId: string) => {
-//   const element = document.getElementById(elementId)
-//   if (!element) return
-
-//   try {
-//     const canvas = await html2canvas(element, {
-//       scale: 2,
-//       useCORS: true,
-//       logging: false,
-//     })
-
-//     const imgWidth = 210 // A4 width in mm
-//     const pageHeight = 297 // A4 height in mm
-//     const imgHeight = (canvas.height * imgWidth) / canvas.width
-//     const pdf = new jsPDF("p", "mm", "a4")
-
-//     pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, imgWidth, imgHeight)
-//     pdf.save("crossing-the-canyon-result.pdf")
-//   } catch (error) {
-//     console.error("Error generating PDF:", error)
-//   }
-// }

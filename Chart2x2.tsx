@@ -77,8 +77,8 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   return (
     <canvas
       ref={canvasRef}
-      width={400}
-      height={400}
+      width={420} // Slightly increased width
+      height={420} // Slightly increased height
       className="border-2 border-transparent rounded-lg"
     />
   );

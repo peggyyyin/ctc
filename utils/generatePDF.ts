@@ -12,8 +12,8 @@ export const generatePDF = async (elementId: string) => {
       logging: false,
     });
 
-    const pageWidth = 210; // A4 width in mm
-    const pageHeight = 297; // A4 height in mm
+    const pageWidth = 140; // A4 width in mm
+    const pageHeight = 198; // A4 height in mm
     const margin = 25.4; // 1 inch margin in mm
 
     // Calculate content dimensions considering 1-inch margins

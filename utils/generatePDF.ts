@@ -16,9 +16,9 @@ export const generatePDF = async (elementId: string) => {
       logging: false,
     });
 
-    const pageWidth = isMobile ? 148 : 210; // A5 for mobile, A4 otherwise
-    const pageHeight = isMobile ? 210 : 297; // A5 for mobile, A4 otherwise
-    const margin = isMobile ? 15 : 25.4; // Reduce margins for smaller screens
+    const pageWidth = 148; // A5 for mobile, A4 otherwise
+    const pageHeight = 210; // A5 for mobile, A4 otherwise
+    const margin = 15; // Reduce margins for smaller screens
 
     // Calculate available content dimensions
     const contentWidth = pageWidth - 2 * margin;
@@ -40,8 +40,8 @@ export const generatePDF = async (elementId: string) => {
       "PNG",
       xOffset,
       yOffset,
-      scaledWidth + 20,
-      scaledHeight + 20
+      scaledWidth + 50,
+      scaledHeight + 50
     );
 
     // Load and add the TFA logo
@@ -50,8 +50,8 @@ export const generatePDF = async (elementId: string) => {
 
     logo.onload = function () {
       // Scale logo proportionally
-      const logoWidth = logo.naturalWidth / 200;
-      const logoHeight = logo.naturalHeight / 200;
+      const logoWidth = logo.naturalWidth / 150;
+      const logoHeight = logo.naturalHeight / 150;
 
       // Position logo in the bottom right, respecting margins
       const x = pageWidth - logoWidth - margin;

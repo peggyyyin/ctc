@@ -1,22 +1,33 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 interface OrganizationInfoPageProps {
-  onSubmit: (name: string, contactName: string, contactEmail: string) => void
+  onSubmit: (name: string, contactName: string, contactRole: string, contactEmail: string) => void
   onBack: () => void
 }
 
 export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationInfoPageProps) {
   const [name, setName] = React.useState("")
   const [contactName, setContactName] = React.useState("")
+  const [contactRole, setContactRole] = React.useState("")
   const [contactEmail, setContactEmail] = React.useState("")
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("organizationInfo") || "{}")
+    setName(savedData.name || "")
+    setContactName(savedData.contactName || "")
+    setContactRole(savedData.contactRole || "")
+    setContactEmail(savedData.contactEmail || "")
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSubmit(name, contactName, contactEmail)
+    const data = { name, contactName, contactRole, contactEmail }
+    localStorage.setItem("organizationInfo", JSON.stringify(data))
+    onSubmit(name, contactName, contactRole, contactEmail)
   }
 
   return (
@@ -44,6 +55,16 @@ export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationI
                 placeholder="Enter contact person's name"
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="contact-role">Contact Role</Label>
+              <Input
+                id="contact-role"
+                placeholder="Enter contact person's role"
+                value={contactRole}
+                onChange={(e) => setContactRole(e.target.value)}
                 required
               />
             </div>

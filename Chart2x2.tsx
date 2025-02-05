@@ -17,80 +17,42 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-        // Set font to sans-serif for everything
-        ctx.font = "bold 10px Arial, Helvetica, sans-serif";
+        // Set font
+        ctx.font = "bold 12px Arial, Helvetica, sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
   
-        // Draw border that's 80% of the canvas
-        const borderScale = 0.8; // 80% of the canvas
+        // Define border dimensions
+        const borderScale = 0.8;
         const borderWidth = canvas.width * borderScale;
         const borderHeight = canvas.height * borderScale;
-        const offsetX = (canvas.width - borderWidth) / 2; // Center horizontally
-        const offsetY = (canvas.height - borderHeight) / 2; // Center vertically
+        const offsetX = (canvas.width - borderWidth) / 2;
+        const offsetY = (canvas.height - borderHeight) / 2;
   
         ctx.strokeStyle = "#152e65";
         ctx.lineWidth = 2;
-        ctx.strokeRect(
-          offsetX,  // X-coordinate (centered)
-          offsetY,  // Y-coordinate (centered)
-          borderWidth, // Width of the border
-          borderHeight // Height of the border
-        );
+        ctx.strokeRect(offsetX, offsetY, borderWidth, borderHeight);
   
-        // Draw grid (inside the border)
+        // Draw grid lines
         ctx.beginPath();
-        ctx.moveTo(canvas.width / 2, offsetY); // Y-axis (top to bottom)
+        ctx.moveTo(canvas.width / 2, offsetY);
         ctx.lineTo(canvas.width / 2, offsetY + borderHeight);
-        ctx.moveTo(offsetX, canvas.height / 2); // X-axis (left to right)
+        ctx.moveTo(offsetX, canvas.height / 2);
         ctx.lineTo(offsetX + borderWidth, canvas.height / 2);
         ctx.stroke();
   
-        // Draw axis labels (outside the border)
+        // Axis labels
         ctx.fillStyle = "#000000";
+        ctx.fillText("FLEXIBLE", canvas.width / 2, offsetY - 15);
+        ctx.fillText("FIXED", canvas.width / 2, offsetY + borderHeight + 15);
+        ctx.fillText("RELATIONAL", offsetX - 60, canvas.height / 2);
+        ctx.fillText("INSTITUTIONAL", offsetX + borderWidth + 60, canvas.height / 2);
   
-        // Y-axis labels
-        ctx.save();
-        ctx.translate(offsetX - 10, canvas.height / 4); // FLEXIBLE (left of the Y-axis)
-        ctx.rotate(-Math.PI / 2);
-        ctx.fillText("FLEXIBLE", 0, 0);
-        ctx.restore();
-  
-        ctx.save();
-        ctx.translate(offsetX - 10, (3 * canvas.height) / 4); // FIXED (left of the Y-axis)
-        ctx.rotate(-Math.PI / 2);
-        ctx.fillText("FIXED", 0, 0);
-        ctx.restore();
-  
-        // X-axis labels
-        ctx.fillText("RELATIONAL", canvas.width / 4, offsetY + borderHeight + 14); // RELATIONAL (below X-axis)
-        ctx.fillText(
-          "INSTITUTIONAL",
-          (3 * canvas.width) / 4,
-          offsetY + borderHeight + 14
-        ); // INSTITUTIONAL (below X-axis)
-  
-        // Draw quadrant labels (inside the border)
-        ctx.textBaseline = "top"; // Position at the top
-        // ctx.textAlign = "left";
-        const rightAlign = canvas.width * .70
-        ctx.fillText("Bridge Builder", rightAlign, offsetY + 20);
-        // ctx.textAlign = "right";
-        const leftAlign = canvas.width * .3
-        ctx.fillText("Trail Guide", leftAlign, offsetY + 20);
-        ctx.textBaseline = "bottom";
-        // ctx.textAlign = "left";
-        ctx.fillText(
-          "Map Maker",
-          rightAlign,
-          offsetY + borderHeight - 20
-        );
-        // ctx.textAlign = "right";
-        ctx.fillText(
-          "Transport Helicopter",
-          leftAlign,
-          offsetY + borderHeight - 20
-        );
+        // Quadrant labels
+        ctx.fillText("Trail Guides", offsetX + borderWidth * 0.25, offsetY + 20);
+        ctx.fillText("Bridge Builders", offsetX + borderWidth * 0.75, offsetY + 20);
+        ctx.fillText("Mapmakers", offsetX + borderWidth * 0.25, offsetY + borderHeight - 20);
+        ctx.fillText("Transport Helicopters", offsetX + borderWidth * 0.75, offsetY + borderHeight - 20);
   
         // Plot result
         ctx.fillStyle = "#40c7cc";
@@ -103,11 +65,10 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
     }
   }, [xSum, ySum]);
   
-
   return (
     <canvas
       ref={canvasRef}
-      width={400} // Canvas size
+      width={400}
       height={400}
       className="border-2 border-transparent rounded-lg"
     />

@@ -25,7 +25,7 @@ export const generatePDF = async (elementId: string) => {
     const contentHeight = pageHeight - 2 * margin;
 
     // Scale chart to 80% of content width
-    const scaledWidth = contentWidth * 0.8;
+    const scaledWidth = contentWidth * 0.7;
     const scaledHeight = (canvas.height * scaledWidth) / canvas.width;
 
     // Center the chart horizontally

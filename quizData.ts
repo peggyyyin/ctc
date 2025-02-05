@@ -124,19 +124,19 @@ export const questions = [
 export const results = {
   A: {
     title: "Trail Guide",
-    description: "You excel in flexible, personalized support through individual relationships. Your strength lies in adaptability and deep personal connections, though you may face scaling challenges."
+    description: "As a Trail Guide, you excel in flexible, personalized support through individual relationships. Your strength lies in adaptability and deep personal connections, though you may face scaling challenges."
   },
   B: {
     title: "Bridge Builder",
-    description: "You create lasting institutional connections and systemic change. Your strength is in building sustainable pathways, though you may face complex funding and partnership challenges."
+    description: "As a Bridge Builder, you create lasting institutional connections and systemic change. Your strength is in building sustainable pathways, though you may face complex funding and partnership challenges."
   },
   C: {
     title: "Map Maker",
-    description: "You provide data-driven guidance and systematic navigation support. Your strength is in evidence-based decision making, though you may be limited by available data inputs."
+    description: "As a Map Maker, you provide data-driven guidance and systematic navigation support. Your strength is in evidence-based decision making, though you may be limited by available data inputs."
   },
   D: {
     title: "Transport Helicopter",
-    description: "You deliver structured, focused programs with clear objectives. Your strength is in consistent delivery and scalability, though you may have less flexibility for individual circumstances."
+    description: "As a Transport Helicopter, you deliver structured, focused programs with clear objectives. Your strength is in consistent delivery and scalability, though you may have less flexibility for individual circumstances."
   }
 };
 

@@ -1,3 +1,5 @@
+"use client";
+
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
@@ -7,57 +9,59 @@ export const generatePDF = async (elementId: string) => {
 
   try {
     // Dynamically adjust scale for smaller screens
-    const isMobile = window.innerWidth < 768; // Typical breakpoint for mobile
-    const canvasScale = isMobile ? 1.5 : 2; // Reduce scale for mobile to fit better
+    const isMobile = window.innerWidth < 768;
+    const canvasScale = isMobile ? 1.5 : 2;
 
     const canvas = await html2canvas(element, {
       scale: canvasScale,
       useCORS: true,
       logging: false,
+      backgroundColor: "#ffffff", // Ensure white background
     });
 
-    const pageWidth = 148; // A5 for mobile, A4 otherwise
-    const pageHeight = 210; // A5 for mobile, A4 otherwise
-    const margin = 15; // Reduce margins for smaller screens
+    const pageWidth = isMobile ? 148 : 210; // A5 for mobile, A4 for desktop
+    const pageHeight = isMobile ? 210 : 297;
+    const margin = isMobile ? 10 : 25;
 
-    // Calculate available content dimensions
+    // Calculate content area
     const contentWidth = pageWidth - 2 * margin;
     const contentHeight = pageHeight - 2 * margin;
 
-    // Scale chart to 80% of content width
-    const scaledWidth = contentWidth * 0.7;
+    // Scale content to fit inside PDF
+    const scaledWidth = contentWidth;
     const scaledHeight = (canvas.height * scaledWidth) / canvas.width;
 
-    // Center the chart horizontally
-    const xOffset = margin + (contentWidth - scaledWidth) / 2;
-    const yOffset = margin;
+    // Centering calculations
+    const xOffset = margin;
+    let yOffset = margin;
 
-    const pdf = new jsPDF("p", "mm", isMobile ? "a5" : "a4"); // Use A5 for mobile, A4 otherwise
+    const pdf = new jsPDF("p", "mm", isMobile ? "a5" : "a4");
 
-    // Add the chart image
+    // **Add Screenshot of Card (excluding buttons)**
     pdf.addImage(
       canvas.toDataURL("image/png"),
       "PNG",
       xOffset,
       yOffset,
-      scaledWidth + 50,
-      scaledHeight + 50
+      scaledWidth,
+      scaledHeight
     );
 
-    // Load and add the TFA logo
+    yOffset += scaledHeight + 10; // Adjust space for the TFA logo
+
+    // **Load and Add TFA Logo where the Download Result button was**
     const logo = new window.Image();
     logo.src = "/TFA_logo.png"; // Ensure it's in `public/`
 
     logo.onload = function () {
-      // Scale logo proportionally
-      const logoWidth = logo.naturalWidth / 150;
-      const logoHeight = logo.naturalHeight / 150;
+      const logoWidth = 40; // Adjust based on actual logo size
+      const logoHeight = 40;
 
-      // Position logo in the bottom right, respecting margins
-      const x = pageWidth - logoWidth - margin;
-      const y = pageHeight - logoHeight - margin;
+      const logoX = pageWidth / 2 - logoWidth / 2; // Center logo
+      const logoY = yOffset; // Place below the content
 
-      pdf.addImage(logo, "PNG", x, y, logoWidth, logoHeight);
+      pdf.addImage(logo, "PNG", logoX, logoY, logoWidth, logoHeight);
+
       pdf.save("crossing-the-canyon-result.pdf");
     };
   } catch (error) {

@@ -40,8 +40,8 @@ export const generatePDF = async (elementId: string) => {
       "PNG",
       xOffset,
       yOffset,
-      scaledWidth,
-      scaledHeight
+      scaledWidth + 20,
+      scaledHeight + 20
     );
 
     // Load and add the TFA logo

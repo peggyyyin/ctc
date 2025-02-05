@@ -12,38 +12,44 @@ export const generatePDF = async (elementId: string) => {
       logging: false,
     });
 
-    const pageWidth = 140; // A4 width in mm
-    const pageHeight = 198; // A4 height in mm
+    const pageWidth = 210; // A4 width in mm
+    const pageHeight = 297; // A4 height in mm
     const margin = 25.4; // 1 inch margin in mm
 
-    // Calculate content dimensions considering 1-inch margins
+    // Calculate available content dimensions (excluding margins)
     const contentWidth = pageWidth - 2 * margin;
     const contentHeight = pageHeight - 2 * margin;
 
-    // Adjust image dimensions based on content size
-    const imgHeight = (canvas.height * contentWidth) / canvas.width;
+    // ✅ Scale chart to 80% of content width
+    const scaledWidth = contentWidth * 0.8;
+    const scaledHeight = (canvas.height * scaledWidth) / canvas.width;
+
+    // ✅ Center the image horizontally
+    const xOffset = margin + (contentWidth - scaledWidth) / 2;
+    const yOffset = margin;
+
     const pdf = new jsPDF("p", "mm", "a4");
 
-    // Add the main content with margins
+    // Add the main content with adjusted scaling
     pdf.addImage(
       canvas.toDataURL("image/png"),
       "PNG",
-      margin,
-      margin,
-      contentWidth,
-      imgHeight
+      xOffset,
+      yOffset,
+      scaledWidth,
+      scaledHeight
     );
 
     // ✅ Load and add the TFA logo correctly
-    const logo = new window.Image(); // Ensures TypeScript compatibility
+    const logo = new window.Image();
     logo.src = "/TFA_logo.png"; // Ensure it's in `public/`
 
     logo.onload = function () {
-      // Use the image's natural size
+      // Scale logo proportionally
       const logoWidth = logo.naturalWidth / 200; // Adjust scaling as needed
       const logoHeight = logo.naturalHeight / 200; // Adjust scaling as needed
 
-      // Position logo with respect to the margin
+      // Position logo in the bottom right, respecting margins
       const x = pageWidth - logoWidth - margin;
       const y = pageHeight - logoHeight - margin;
 

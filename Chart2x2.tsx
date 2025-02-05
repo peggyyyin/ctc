@@ -46,17 +46,17 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         ctx.fillText("FLEXIBLE", canvas.width / 2, offsetY - 15);
         ctx.fillText("FIXED", canvas.width / 2, offsetY + borderHeight + 15);
         ctx.save();
-        ctx.translate(offsetX - 40, canvas.height / 2);
+        ctx.translate(offsetX - 10, canvas.height / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText("RELATIONAL", 0, 0);
         ctx.restore();
         
         ctx.save();
-        ctx.translate(offsetX + borderWidth + 40, canvas.height / 2);
+        ctx.translate(offsetX + borderWidth + 10, canvas.height / 2);
         ctx.rotate(Math.PI / 2);
         ctx.fillText("INSTITUTIONAL", 0, 0);
         ctx.restore();
-        
+
         // Quadrant labels
         ctx.fillText("Trail Guides", offsetX + borderWidth * 0.25, offsetY + 20);
         ctx.fillText("Bridge Builders", offsetX + borderWidth * 0.75, offsetY + 20);

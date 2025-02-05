@@ -6,31 +6,35 @@ export const generatePDF = async (elementId: string) => {
   if (!element) return;
 
   try {
+    // Dynamically adjust scale for smaller screens
+    const isMobile = window.innerWidth < 768; // Typical breakpoint for mobile
+    const canvasScale = isMobile ? 1.5 : 2; // Reduce scale for mobile to fit better
+
     const canvas = await html2canvas(element, {
-      scale: 2,
+      scale: canvasScale,
       useCORS: true,
       logging: false,
     });
 
-    const pageWidth = 210; // A4 width in mm
-    const pageHeight = 297; // A4 height in mm
-    const margin = 25.4; // 1 inch margin in mm
+    const pageWidth = isMobile ? 148 : 210; // A5 for mobile, A4 otherwise
+    const pageHeight = isMobile ? 210 : 297; // A5 for mobile, A4 otherwise
+    const margin = isMobile ? 15 : 25.4; // Reduce margins for smaller screens
 
-    // Calculate available content dimensions (excluding margins)
+    // Calculate available content dimensions
     const contentWidth = pageWidth - 2 * margin;
     const contentHeight = pageHeight - 2 * margin;
 
-    // ✅ Scale chart to 80% of content width
+    // Scale chart to 80% of content width
     const scaledWidth = contentWidth * 0.8;
     const scaledHeight = (canvas.height * scaledWidth) / canvas.width;
 
-    // ✅ Center the image horizontally
+    // Center the chart horizontally
     const xOffset = margin + (contentWidth - scaledWidth) / 2;
     const yOffset = margin;
 
-    const pdf = new jsPDF("p", "mm", "a4");
+    const pdf = new jsPDF("p", "mm", isMobile ? "a5" : "a4"); // Use A5 for mobile, A4 otherwise
 
-    // Add the main content with adjusted scaling
+    // Add the chart image
     pdf.addImage(
       canvas.toDataURL("image/png"),
       "PNG",
@@ -40,14 +44,14 @@ export const generatePDF = async (elementId: string) => {
       scaledHeight
     );
 
-    // ✅ Load and add the TFA logo correctly
+    // Load and add the TFA logo
     const logo = new window.Image();
     logo.src = "/TFA_logo.png"; // Ensure it's in `public/`
 
     logo.onload = function () {
       // Scale logo proportionally
-      const logoWidth = logo.naturalWidth / 200; // Adjust scaling as needed
-      const logoHeight = logo.naturalHeight / 200; // Adjust scaling as needed
+      const logoWidth = logo.naturalWidth / 200;
+      const logoHeight = logo.naturalHeight / 200;
 
       // Position logo in the bottom right, respecting margins
       const x = pageWidth - logoWidth - margin;

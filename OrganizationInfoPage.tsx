@@ -5,17 +5,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 interface OrganizationInfoPageProps {
-  onSubmit: (name: string, contact: string) => void
+  onSubmit: (name: string, contactName: string, contactEmail: string) => void
   onBack: () => void
 }
 
 export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationInfoPageProps) {
   const [name, setName] = React.useState("")
-  const [contact, setContact] = React.useState("")
+  const [contactName, setContactName] = React.useState("")
+  const [contactEmail, setContactEmail] = React.useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSubmit(name, contact)
+    onSubmit(name, contactName, contactEmail)
   }
 
   return (
@@ -37,12 +38,22 @@ export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationI
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="org-contact">Contact Information</Label>
+              <Label htmlFor="contact-name">Contact Name</Label>
               <Input
-                id="org-contact"
-                placeholder="Enter contact information (email or phone)"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                id="contact-name"
+                placeholder="Enter contact person's name"
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="contact-email">Contact Email</Label>
+              <Input
+                id="contact-email"
+                placeholder="Enter email"
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
                 required
               />
             </div>
@@ -60,4 +71,3 @@ export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationI
     </Card>
   )
 }
-

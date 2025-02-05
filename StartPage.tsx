@@ -11,7 +11,7 @@ export default function StartPage({ onStart, onBack }: StartPageProps) {
   return (
     <Card className="w-full max-w-4xl mx-auto bg-white/95 shadow-lg rounded-xl overflow-hidden backdrop-blur-sm">
       <CardHeader className="bg-[#152e65] text-white text-center py-6 sm:py-8">
-        <CardTitle className="text-2xl sm:text-4xl md:text-5xl font-bold">Welcome to the Canyon!</CardTitle>
+        <CardTitle className="text-2xl sm:text-4xl md:text-5xl font-bold">Welcome to the Crossing the Canyon Quiz!</CardTitle>
       </CardHeader>
       <CardContent className="mt-4 sm:mt-6 px-4 sm:px-8">
         <div className="flex justify-center mb-4 sm:mb-6">

@@ -30,6 +30,33 @@ export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationI
     onSubmit(name, contactName, contactRole, contactEmail)
   }
 
+  const submitToGoogleSheets = async () => {
+    const resultCategory = calculateResult(); // Get quiz result
+    const responseData = {
+      orgName,
+      contactName: orgContact,
+      contactRole: "", // Add if collected
+      contactEmail: "", // Add if collected
+      answers: Object.values(answerState), // Convert answers to an array
+      xSum,
+      ySum,
+      resultCategory
+    };
+  
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx0Ii9wtgJQplU7v6md1wI4f84Savq_eQScY6LU-DI6y8iE9L1Z1VvpsdUiG-jR4_tUgA/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(responseData),
+      });
+  
+      const result = await response.json();
+      console.log("Google Sheets Response:", result);
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+  };
+  
   return (
     <Card className="w-full max-w-2xl mx-auto bg-white/95 shadow-lg rounded-xl overflow-hidden backdrop-blur-sm">
       <CardHeader className="bg-[#152e65] text-white">

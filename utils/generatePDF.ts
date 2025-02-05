@@ -55,7 +55,7 @@ export const generatePDF = async (elementId: string) => {
 
     logo.onload = function () {
       const logoWidth = 40; // Adjust based on actual logo size
-      const logoHeight = 40;
+      const logoHeight = 28;
 
       const logoX = pageWidth / 2 - logoWidth / 2; // Center logo
       const logoY = yOffset; // Place below the content

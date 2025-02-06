@@ -22,10 +22,7 @@ export default function PersonalityQuiz() {
   const [orgName, setOrgName] = useState("");
   const [orgContact, setOrgContact] = useState("");
 
-  const handleStart = () => {
-    setCurrentQuestion(-1);
-  };
-
+  const handleStart = () => setCurrentQuestion(-1);
   const handleOrgInfoSubmit = (name: string, contact: string) => {
     setOrgName(name);
     setOrgContact(contact);
@@ -39,6 +36,19 @@ export default function PersonalityQuiz() {
       } else {
         setShowResult(true);
       }
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    } else if (currentQuestion === 0) {
+      setCurrentQuestion(-1);
+    } else if (currentQuestion === -1) {
+      setCurrentQuestion(-2);
+    } else if (showResult) {
+      setShowResult(false);
+      setCurrentQuestion(questions.length - 1);
     }
   };
 
@@ -66,9 +76,7 @@ export default function PersonalityQuiz() {
 
   const handleAnswerChange = (value: string) => {
     const prevAnswer = answerState[currentQuestion];
-    if (prevAnswer) {
-      updateSums(prevAnswer, true);
-    }
+    if (prevAnswer) updateSums(prevAnswer, true);
     updateSums(value);
     setAnswerState((prev) => ({ ...prev, [currentQuestion]: value }));
   };
@@ -85,12 +93,10 @@ export default function PersonalityQuiz() {
     const responseData = {
       orgName,
       contactName: orgContact,
-      contactRole: "", // Add role if needed
-      contactEmail: "", // Add email if needed
-      answers: Object.values(answerState), // Convert answers to an array
+      answers: Object.values(answerState),
       xSum,
       ySum,
-      resultCategory
+      resultCategory,
     };
 
     try {
@@ -100,8 +106,7 @@ export default function PersonalityQuiz() {
         body: JSON.stringify(responseData),
       });
 
-      const result = await response.json();
-      console.log("Google Sheets Response:", result);
+      console.log("Google Sheets Response:", await response.json());
     } catch (error) {
       console.error("Error submitting data:", error);
     }
@@ -126,9 +131,52 @@ export default function PersonalityQuiz() {
           </div>
           <p className="mb-6 text-center text-lg">{resultData.description}</p>
         </CardContent>
+        <CardFooter className="flex flex-col sm:flex-row gap-4">
+          <Button
+            onClick={() => generatePDF("result-content")}
+            className="w-full sm:flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white"
+          >
+            Download Result
+          </Button>
+          <Link href="https://www.reinventionlab.org/crossing-the-canyon" target="_blank" className="w-full sm:flex-1">
+            <Button className="w-full bg-[#152e65] hover:bg-[#152e65]/90 text-white">
+              Take me to the research
+            </Button>
+          </Link>
+        </CardFooter>
       </Card>
     );
   }
 
-  return <StartPage onStart={handleStart} />;
+  const question = questions[currentQuestion];
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+
+  return (
+    <Card className="w-full max-w-2xl mx-auto bg-white/95 shadow-lg rounded-xl overflow-hidden">
+      <CardHeader className="bg-[#152e65] text-white">
+        <CardTitle className="text-xl sm:text-2xl">Crossing the Canyon</CardTitle>
+        <CardDescription className="text-white/80 text-sm sm:text-base">
+          Question {currentQuestion + 1} of {questions.length}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="mt-4 p-4 sm:p-6">
+        <Progress value={progress} className="mb-6 h-2" />
+        <h2 className="text-lg sm:text-xl font-semibold mb-4">{question.question}</h2>
+        <RadioGroup onValueChange={handleAnswerChange} value={answerState[currentQuestion] || ""}>
+          {question.options.map((option) => (
+            <div key={option.id} className="flex items-center space-x-2 mb-4">
+              <RadioGroupItem value={option.id} id={`option-${option.id}`} />
+              <Label htmlFor={`option-${option.id}`}>{option.text}</Label>
+            </div>
+          ))}
+        </RadioGroup>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button onClick={handleBack}>Back</Button>
+        <Button onClick={handleNext} disabled={!answerState[currentQuestion]}>
+          {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </CardFooter>
+    </Card>
+  );
 }

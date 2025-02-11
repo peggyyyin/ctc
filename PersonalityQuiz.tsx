@@ -47,16 +47,28 @@ export default function PersonalityQuiz() {
         body: JSON.stringify(responseData),
       });
 
+    // Check if the response is a valid JSON response
+    const contentType = response.headers.get("Content-Type");
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    if (contentType && contentType.includes("application/json")) {
       const result = await response.json();
       if (result.success) {
         console.log('Data saved to Google Sheets');
       } else {
         console.error('Failed to save data to Google Sheets');
       }
-    } catch (error) {
-      console.error('Error submitting data', error);
+    } else {
+      // If the response is not JSON, print the response text
+      console.error('Invalid response format:', await response.text());
     }
-  };
+  } catch (error) {
+    console.error('Error submitting data', error);
+  }
+};
 
   const handleStart = () => {
     setCurrentQuestion(-1)

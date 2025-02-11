@@ -35,15 +35,13 @@ export default function StartPage({ onStart, onBack }: StartPageProps) {
           of helping youth thrive.
         </p>
       </CardContent>
-      <CardFooter className="flex justify-between pb-6 sm:pb-8">
+      <CardFooter className="flex justify-between pb-6 sm:pb-8 gap-4">
         <Button 
-        onClick={onBack} disabled={true} className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300"
-        style={{ width: '80%'}}>
+        onClick={onBack} disabled={true} className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300">
           Back
         </Button>
         <Button 
-        onClick={onStart} className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white"
-        style={{ width: '80%'}}>
+        onClick={onStart} className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">
           Start Now
         </Button>
       </CardFooter>

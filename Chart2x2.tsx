@@ -15,7 +15,7 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
     const handleResize = () => {
       if (canvasRef.current) {
         const parentWidth = canvasRef.current.parentElement?.offsetWidth || window.innerWidth; // Use window size if parent width is unavailable
-        const parentHeight = parentWidth * 0.75; // Maintain aspect ratio (3:4)
+        const parentHeight = canvasRef.current.parentElement?.offsetWidth || window.innerWidth;
         setCanvasSize({ width: parentWidth, height: parentHeight });
       }
     };

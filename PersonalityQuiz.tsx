@@ -140,10 +140,10 @@ export default function PersonalityQuiz() {
   }
 
   const calculateResult = () => {
-    if (xSum >= 0 && ySum >= 0) return "B"
-    if (xSum < 0 && ySum >= 0) return "A"
-    if (xSum < 0 && ySum < 0) return "C"
-    return "D"
+    if (xSum >= 0 && ySum >= 0) return "B" //bridge builder
+    if (xSum < 0 && ySum >= 0) return "A" // trailguide
+    if (xSum < 0 && ySum < 0) return "C" // mapmaker
+    return "D" // transport
   }
 
   const resetQuiz = () => {

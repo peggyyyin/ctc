@@ -38,7 +38,7 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Set font
-        ctx.font = "bold 12px Arial, Helvetica, sans-serif";
+        ctx.font = "bold 11px Arial, Helvetica, sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -95,7 +95,7 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   }, [xSum, ySum, canvasSize]); // Redraw when data or canvas size changes
 
   return (
-    <div className="flex justify-center mb-6">
+    <div className="justify-center mb-6">
       <canvas
         ref={canvasRef}
         width={canvasSize.width}  // Responsive width

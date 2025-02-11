@@ -102,8 +102,8 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         height={canvasSize.height}  // Responsive height
         className="border-2 border-transparent rounded-lg"
         style={{
-          width: '80%',  // Ensures full width of the container
-          height: 'auto', // Maintains the aspect ratio
+          width: '90%',  // Ensures full width of the container
+          height: '90%', // Maintains the aspect ratio
         }}
       />
     </div>

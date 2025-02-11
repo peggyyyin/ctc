@@ -47,7 +47,8 @@ export const generatePDF = async (elementId: string) => {
       scaledHeight
     );
 
-    yOffset += scaledHeight + 10; // Adjust space for the TFA logo
+    // Adjust the yOffset after the content to make room for the logo
+    yOffset += scaledHeight + 10; // Add a small gap below the content
 
     // **Load and Add TFA Logo where the Download Result button was**
     const logo = new window.Image();
@@ -57,8 +58,8 @@ export const generatePDF = async (elementId: string) => {
       const logoWidth = 20; // Adjust based on actual logo size
       const logoHeight = 14;
 
-      const logoX = pageWidth / 2 - logoWidth / 2; // Center logo
-      const logoY = yOffset; // Place below the content
+      const logoX = pageWidth / 2 - logoWidth / 2; // Center logo horizontally
+      const logoY = yOffset; // Place logo below the content
 
       pdf.addImage(logo, "PNG", logoX, logoY, logoWidth, logoHeight);
 

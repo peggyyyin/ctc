@@ -21,7 +21,7 @@ export const generatePDF = async (elementId: string) => {
 
     const pageWidth = isMobile ? 148 : 210; // A5 for mobile, A4 for desktop
     const pageHeight = isMobile ? 210 : 297;
-    const margin = isMobile ? 10 : 25;
+    const margin = isMobile ? 15 : 25;
 
     // Calculate content area
     const contentWidth = pageWidth - 2 * margin;

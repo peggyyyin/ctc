@@ -8,7 +8,7 @@ const SHEET_ID = '1ZVp_rc9t5-P0-x1k34mJPHs8tcY7lNe87yC_U9jt_2c';  // Replace wit
 async function getAuthClient() {
   // Load the credentials from your credentials JSON file.
   const auth = new google.auth.GoogleAuth({
-    keyFile: 'api/save-data/google_key.json',  // Path to your credentials file
+    keyFile: 'api/save-data/new-key.json',  // Path to your credentials file
     scopes: SCOPES,
   });
 

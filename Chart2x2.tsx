@@ -14,8 +14,8 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   useEffect(() => {
     const handleResize = () => {
       if (canvasRef.current) {
-        const parentWidth = canvasRef.current.parentElement?.offsetWidth || 500;
-        const parentHeight = canvasRef.current.parentElement?.offsetHeight || 500;
+        const parentWidth = canvasRef.current.parentElement?.offsetWidth || window.innerWidth; // Use window size if parent width is unavailable
+        const parentHeight = parentWidth * 0.75; // Maintain aspect ratio (3:4)
         setCanvasSize({ width: parentWidth, height: parentHeight });
       }
     };
@@ -37,8 +37,9 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Set font
-        ctx.font = "bold 11px Arial, Helvetica, sans-serif";
+        // Calculate font size based on canvas width
+        const fontSize = canvas.width * 0.025;  // 2.5% of the canvas width
+        ctx.font = `bold ${fontSize}px Arial, Helvetica, sans-serif`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -63,25 +64,25 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
 
         // Axis labels
         ctx.fillStyle = "#000000";
-        ctx.fillText("FLEXIBLE", canvas.width / 2, offsetY - 15);
-        ctx.fillText("FIXED", canvas.width / 2, offsetY + borderHeight + 15);
+        ctx.fillText("FLEXIBLE", canvas.width / 2, offsetY - fontSize);
+        ctx.fillText("FIXED", canvas.width / 2, offsetY + borderHeight + fontSize);
         ctx.save();
-        ctx.translate(offsetX - 10, canvas.height / 2);
+        ctx.translate(offsetX - fontSize / 2, canvas.height / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText("RELATIONAL", 0, 0);
         ctx.restore();
 
         ctx.save();
-        ctx.translate(offsetX + borderWidth + 10, canvas.height / 2);
+        ctx.translate(offsetX + borderWidth + fontSize / 2, canvas.height / 2);
         ctx.rotate(Math.PI / 2);
         ctx.fillText("INSTITUTIONAL", 0, 0);
         ctx.restore();
 
         // Quadrant labels
-        ctx.fillText("Trail Guides", offsetX + borderWidth * 0.25, offsetY + 20);
-        ctx.fillText("Bridge Builders", offsetX + borderWidth * 0.75, offsetY + 20);
-        ctx.fillText("Mapmakers", offsetX + borderWidth * 0.25, offsetY + borderHeight - 20);
-        ctx.fillText("Transport Helicopters", offsetX + borderWidth * 0.75, offsetY + borderHeight - 20);
+        ctx.fillText("Trail Guides", offsetX + borderWidth * 0.25, offsetY + fontSize);
+        ctx.fillText("Bridge Builders", offsetX + borderWidth * 0.75, offsetY + fontSize);
+        ctx.fillText("Mapmakers", offsetX + borderWidth * 0.25, offsetY + borderHeight - fontSize);
+        ctx.fillText("Transport Helicopters", offsetX + borderWidth * 0.75, offsetY + borderHeight - fontSize);
 
         // Plot result
         ctx.fillStyle = "#40c7cc";
@@ -102,8 +103,8 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         height={canvasSize.height}  // Responsive height
         className="border-2 border-transparent rounded-lg"
         style={{
-          width: '90%',  // Ensures full width of the container
-          height: '90%', // Maintains the aspect ratio
+          width: '100%',  // Ensures full width of the container
+          height: 'auto', // Maintains the aspect ratio
         }}
       />
     </div>

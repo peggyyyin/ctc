@@ -25,3 +25,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.tsapi/save-data/google_key.json
+next-env.d.tsapi/save-data/new-key.json
+

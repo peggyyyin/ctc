@@ -206,13 +206,13 @@ export default function PersonalityQuiz() {
     <Card className="w-full max-w-2xl mx-auto bg-white/95 shadow-lg rounded-xl overflow-hidden backdrop-blur-sm">
       <CardHeader className="bg-[#152e65] text-white">
         <CardTitle className="text-xl sm:text-2xl">Crossing the Canyon</CardTitle>
-        <CardDescription className="text-white/80 text-sm sm:text-base">
+        <CardDescription className="text-white/80 text-center text-sm sm:text-base">
           Question {currentQuestion + 1} of {questions.length}
         </CardDescription>
       </CardHeader>
       <CardContent className="mt-4 p-4 sm:p-6">
         <Progress value={progress} className="mb-6 h-2" />
-        <h2 className="text-lg sm:text-xl text-center font-semibold mb-4">{question.question}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold mb-4">{question.question}</h2>
         <RadioGroup
           key={currentQuestion} // Ensures a fresh render of the component for every question
           onValueChange={handleAnswerChange}

@@ -54,8 +54,8 @@ export const generatePDF = async (elementId: string) => {
     logo.src = "/TFA_logo.png"; // Ensure it's in `public/`
 
     logo.onload = function () {
-      const logoWidth = 40; // Adjust based on actual logo size
-      const logoHeight = 28;
+      const logoWidth = 20; // Adjust based on actual logo size
+      const logoHeight = 14;
 
       const logoX = pageWidth / 2 - logoWidth / 2; // Center logo
       const logoY = yOffset; // Place below the content

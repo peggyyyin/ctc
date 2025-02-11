@@ -83,12 +83,14 @@ export default function PersonalityQuiz() {
     }
   }
 
+
   const handleNext = () => {
     if (answerState[currentQuestion]) {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1)
       } else {
         setShowResult(true)
+        submitToGoogleSheets() // Call submitToGoogleSheets when quiz finishes
       }
     }
   }
@@ -147,7 +149,7 @@ export default function PersonalityQuiz() {
   }
 
   if (currentQuestion === -2) {
-    return <StartPage onStart={handleStart} />
+    return <StartPage onStart={handleStart} onBack={handleBack} />  // Pass onBack prop here
   }
 
   if (currentQuestion === -1) {

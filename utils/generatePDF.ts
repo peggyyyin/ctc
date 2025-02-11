@@ -48,7 +48,7 @@ export const generatePDF = async (elementId: string) => {
     );
 
     // Adjust the yOffset after the content to make room for the logo
-    yOffset += scaledHeight + 10; // Add a small gap below the content
+    yOffset += scaledHeight - 10; // Add a small gap below the content
 
     // **Load and Add TFA Logo where the Download Result button was**
     const logo = new window.Image();

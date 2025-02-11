@@ -80,7 +80,7 @@ export default function OrganizationInfoPage({ onSubmit, onBack }: OrganizationI
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
+        <CardFooter className="flex justify-between gap-4">
           <Button type="button" onClick={onBack} className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300">
             Back
           </Button>

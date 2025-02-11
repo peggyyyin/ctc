@@ -8,7 +8,7 @@ interface Chart2x2Props {
 
 const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
+  const [canvasSize, setCanvasSize] = useState({ width: 700, height: 700 });
 
   // Resize canvas on window resize
   useEffect(() => {
@@ -104,7 +104,7 @@ const Chart2x2: React.FC<Chart2x2Props> = ({ xSum, ySum }) => {
         className="border-2 border-transparent rounded-lg"
         style={{
           width: '100%',  // Ensures full width of the container
-          height: 'auto', // Maintains the aspect ratio
+          height: '100%', // Maintains the aspect ratio
         }}
       />
     </div>

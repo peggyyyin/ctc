@@ -212,7 +212,7 @@ export default function PersonalityQuiz() {
       </CardHeader>
       <CardContent className="mt-4 p-4 sm:p-6">
         <Progress value={progress} className="mb-6 h-2" />
-        <h2 className="text-lg sm:text-xl font-semibold mb-4">{question.question}</h2>
+        <h2 className="text-lg sm:text-xl text-center font-semibold mb-4">{question.question}</h2>
         <RadioGroup
           key={currentQuestion} // Ensures a fresh render of the component for every question
           onValueChange={handleAnswerChange}

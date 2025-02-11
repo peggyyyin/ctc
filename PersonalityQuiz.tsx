@@ -20,49 +20,54 @@ export default function PersonalityQuiz() {
   const [xSum, setXSum] = useState(0)
   const [ySum, setYSum] = useState(0)
   const [orgName, setOrgName] = useState("")
-  const [orgContact, setOrgContact] = useState("")
+  const [contactName, setContactName] = useState("")
+  const [contactRole, setContactRole] = useState("")
+  const [contactEmail, setContactEmail] = useState("")
 
-  const submitToBackend = async () => {
+  const submitToGoogleSheets = async () => {
     const resultCategory = calculateResult(); // Get result category
     const responseData = {
-      name: orgName,
-      contactName: orgContact,
-      answers: Object.values(answerState),
+      organizationName: orgName,
+      contactName: contactName,
+      contactRole: contactRole,
+      contactEmail: contactEmail,
+      answers: Object.values(answerState), // Assuming answers is an object of answers
       xSum,
       ySum,
       resultCategory,
-      timestamp: new Date().toISOString(), // Add timestamp
+      timestamp: new Date().toISOString(),
     };
-  
+
     try {
-      const response = await fetch('/api/save-data', {
+      const response = await fetch('/api/save-to-google-sheets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(responseData), // Send the data to your API
+        body: JSON.stringify(responseData),
       });
-  
+
       const result = await response.json();
       if (result.success) {
-        console.log('Data saved successfully');
+        console.log('Data saved to Google Sheets');
       } else {
-        console.error('Failed to save data');
+        console.error('Failed to save data to Google Sheets');
       }
     } catch (error) {
       console.error('Error submitting data', error);
     }
   };
-  
-  
+
   const handleStart = () => {
     setCurrentQuestion(-1)
   }
 
-  const handleOrgInfoSubmit = (name: string, contact: string) => {
+  const handleOrgInfoSubmit = (name: string, contactName: string, contactRole: string, contactEmail: string) => {
     setOrgName(name)
-    setOrgContact(contact)
-    setCurrentQuestion(0)
+    setContactName(contactName)
+    setContactRole(contactRole)
+    setContactEmail(contactEmail)
+    setCurrentQuestion(0) // Move to first question
   }
 
   const handleBack = () => {
@@ -136,7 +141,9 @@ export default function PersonalityQuiz() {
     setXSum(0)
     setYSum(0)
     setOrgName("")
-    setOrgContact("")
+    setContactName("")
+    setContactRole("")
+    setContactEmail("")
   }
 
   if (currentQuestion === -2) {
@@ -146,11 +153,6 @@ export default function PersonalityQuiz() {
   if (currentQuestion === -1) {
     return <OrganizationInfoPage onSubmit={handleOrgInfoSubmit} onBack={handleBack} />
   }
-
-  // if (currentQuestion === -2) {
-  //   return <StartPage onStart={handleStart} onBack={handleBack} />;
-  // }
-  
 
   if (showResult) {
     const result = calculateResult()

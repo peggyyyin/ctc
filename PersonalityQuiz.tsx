@@ -39,7 +39,7 @@ export default function PersonalityQuiz() {
     };
 
     try {
-      const response = await fetch('/api/save-to-google-sheets', {
+      const response = await fetch('/api/save-data/save-to-google-sheets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

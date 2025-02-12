@@ -20,7 +20,7 @@ export const generatePDF = async (elementId: string, resultData: any) => {
     });
 
     const pageWidth = isMobile ? 148 : 210; 
-    const pageHeight = isMobile ? 210 : 297;
+    const pageHeight = isMobile ? 250 : 350;
     const margin = isMobile ? 15 : 25;
     
     const contentWidth = pageWidth - 2 * margin;
@@ -45,17 +45,17 @@ export const generatePDF = async (elementId: string, resultData: any) => {
 
     yOffset += scaledHeight; // Add gap after content
 
-    // Add title and description dynamically
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(16);
-    pdf.text(resultData.title, pageWidth / 2 - pdf.getTextWidth(resultData.title) / 2, yOffset);
+    // // Add title and description dynamically
+    // pdf.setFont("helvetica", "normal");
+    // pdf.setFontSize(16);
+    // pdf.text(resultData.title, pageWidth / 2 - pdf.getTextWidth(resultData.title) / 2, yOffset);
     
-    yOffset += 10; // Add space after the title
-    pdf.setFontSize(12);
-    pdf.text(resultData.description, pageWidth / 2 - pdf.getTextWidth(resultData.description) / 2, yOffset);
+    // yOffset += 10; // Add space after the title
+    // pdf.setFontSize(12);
+    // pdf.text(resultData.description, pageWidth / 2 - pdf.getTextWidth(resultData.description) / 2, yOffset);
 
     // Adjust yOffset after the description
-    yOffset += 20; // Add space after description
+    yOffset += 10; // Add space after description
 
     // Check if the content height exceeds the page height and create a new page if necessary
     if (yOffset + 30 > pageHeight) {

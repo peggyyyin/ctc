@@ -117,17 +117,17 @@ export const generatePDF = async (elementId: string, resultData: any) => {
 
     yOffset += scaledHeight; // Add gap after content
 
-    // Add title and description
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(16);
-    pdf.text(resultData.title, pageWidth / 2 - pdf.getTextWidth(resultData.title) / 2, yOffset);
+    // // Add title and description
+    // pdf.setFont("helvetica", "normal");
+    // pdf.setFontSize(16);
+    // pdf.text(resultData.title, pageWidth / 2 - pdf.getTextWidth(resultData.title) / 2, yOffset);
     
-    yOffset += 10; // Add space after the title
-    pdf.setFontSize(12);
-    pdf.text(resultData.description, pageWidth / 2 - pdf.getTextWidth(resultData.description) / 2, yOffset);
+    // yOffset += 10; // Add space after the title
+    // pdf.setFontSize(12);
+    // pdf.text(resultData.description, pageWidth / 2 - pdf.getTextWidth(resultData.description) / 2, yOffset);
 
     // Adjust yOffset after the description
-    yOffset += 20; // Add space after description
+    yOffset += 5; // Add space after description
     
     // Add logo to the PDF
     const logo = new window.Image();

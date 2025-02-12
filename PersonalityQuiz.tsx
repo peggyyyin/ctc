@@ -49,6 +49,8 @@ export default function PersonalityQuiz() {
     try {
       // Connect to Neon Database
       const sql = neon(`${process.env.NEXT_PUBLIC_DATABASE_URL}`);
+      console.log("Database URL: ", process.env.NEXT_PUBLIC_DATABASE_URL);
+
 
       if (!process.env.NEXT_PUBLIC_DATABASE_URL) {
         console.error('NEXT_PUBLIC_DATABASE_URL is not defined in environment variables.');

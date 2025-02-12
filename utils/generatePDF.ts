@@ -20,7 +20,7 @@ export const generatePDF = async (elementId: string, resultData: any) => {
     });
 
     const pageWidth = isMobile ? 148 : 210; 
-    const pageHeight = isMobile ? 250 : 350;
+    const pageHeight = isMobile ? 275 : 350;
     const margin = isMobile ? 15 : 25;
     
     const contentWidth = pageWidth - 2 * margin;

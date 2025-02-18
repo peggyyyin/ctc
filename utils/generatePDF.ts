@@ -84,7 +84,7 @@
 
 import html2canvas from "html2canvas";
 
-export const generatePNG = async (elementId: string) => {
+export const generatePDF = async (elementId: string) => {
   const element = document.getElementById(elementId);
   if (!element) {
     console.error("Element not found!");

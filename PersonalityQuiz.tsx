@@ -195,7 +195,7 @@ export default function PersonalityQuiz() {
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-4">
           <Button
-            onClick={() => generatePDF("result-content", resultData)}
+            onClick={() => generatePDF("result-content")}
             className="w-full sm:flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white"
           >
             Download Result

@@ -105,6 +105,20 @@ export const generatePDF = async (elementId: string) => {
       height: height, 
     });
 
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      const logo = new Image();
+      logo.src = "/TFA_logo.png"; // Ensure this file is in the public folder
+      await new Promise((resolve) => {
+        logo.onload = resolve;
+      });
+      const logoWidth = 200;
+      const logoHeight = 100;
+      const logoX = (canvas.width - logoWidth) / 2;
+      const logoY = canvas.height - logoHeight - 20; // Position near bottom
+      ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
+    }
+
     const dataUrl = canvas.toDataURL("image/png");
 
     // Trigger download

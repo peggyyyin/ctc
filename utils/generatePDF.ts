@@ -26,8 +26,9 @@ export const generatePDF = async (elementId: string) => {
     const logoWidth = 200;
     const logoHeight = 100;
     const padding = 40;
+    const logoPadding = 20; // Extra space between canvas and logo
     const finalWidth = canvas.width;
-    const finalHeight = canvas.height + logoHeight + padding * 2;
+    const finalHeight = canvas.height + logoHeight + padding * 2 + logoPadding;
 
     const finalCanvas = document.createElement("canvas");
     finalCanvas.width = finalWidth;

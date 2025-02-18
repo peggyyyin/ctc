@@ -80,31 +80,41 @@
 //     console.error("Error generating PDF:", error);
 //   }
 // };
-
 "use client";
 
 import html2canvas from "html2canvas";
 
 export const generatePNG = async (elementId: string) => {
   const element = document.getElementById(elementId);
-  if (!element) return;
+  if (!element) {
+    console.error("Element not found!");
+    return;
+  }
 
   try {
+    // Set fixed width and height for consistent output
+    const width = 2138;
+    const height = 1538;
+
     const canvas = await html2canvas(element, {
-      scale: 2, // Increase scale for better resolution
+      scale: 1, // Keep scale at 1 to match defined dimensions
       useCORS: true,
       logging: false,
       backgroundColor: "#ffffff",
-      width: 2138, // Force canvas width
-      height: 1538, // Force canvas height
+      width: width, 
+      height: height, 
     });
 
+    const dataUrl = canvas.toDataURL("image/png");
+
+    // Trigger download
     const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
+    link.href = dataUrl;
     link.download = "crossing-the-canyon-result.png";
+    document.body.appendChild(link); // Append to body to ensure click works
     link.click();
+    document.body.removeChild(link); // Clean up
   } catch (error) {
     console.error("Error generating PNG:", error);
   }
 };
-

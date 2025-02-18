@@ -133,6 +133,14 @@ export default function PersonalityQuiz() {
         setXSum((prev) => prev + 1 * multiplier)
         setYSum((prev) => prev - 1 * multiplier)
         break
+      case "C":
+        setYSum((prev) => prev - 1 * multiplier)
+        setXSum((prev) => prev - 1 * multiplier)
+        break
+      case "skip":
+        setYSum((prev) => prev)
+        setXSum((prev) => prev)
+        break
     }
   }
   
@@ -192,7 +200,7 @@ export default function PersonalityQuiz() {
           >
             Download Result
           </Button>
-          <Link href="https://www.reinventionlab.org/crossing-the-canyon" target="_blank" className="w-full sm:flex-1">
+          <Link href="https://flipbooklets.com/pdfflipbooklets/crossing-the-canyon#page1" target="_blank" className="w-full sm:flex-1">
             <Button className="w-full bg-[#152e65] hover:bg-[#152e65]/90 text-white">Take me to the research</Button>
           </Link>
         </CardFooter>

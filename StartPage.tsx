@@ -36,7 +36,7 @@ export default function StartPage({ onStart, onBack }: StartPageProps) {
           of helping youth thrive.
         </p>
       </CardContent>
-      <CardFooter className="flex justify-between gap-4">
+      <CardFooter className="flex flex-col sm:flex-row gap-4">
       <Link href="https://flipbooklets.com/pdfflipbooklets/crossing-the-canyon#page1" target="_blank" className="w-full sm:flex-1">
             <Button className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">Explore Research</Button>
       </Link>

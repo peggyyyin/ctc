@@ -45,7 +45,7 @@ export const generatePDF = async (elementId: string) => {
 
       // Draw logo at the bottom center
       const logoX = (finalWidth - logoWidth) / 2;
-      const logoY = finalHeight - logoHeight - 40;
+      const logoY = finalHeight - logoHeight - 60;
       ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
     }
 

@@ -18,7 +18,7 @@ export const questions = [
       { id: 'A', text: "A. We adapt our support based on whatever the young person needs, even years later." },
       { id: 'B', text: "B. We're flexible within our established institutional framework and partnerships." },
       { id: 'C', text: "C. We adjust recommendations based on ever-evolving data and feedback." },
-      { id: 'D', text: "D. We have clear, structured programs with defined objectives and outcomes." }
+      { id: 'D', text: "D. We have clear, structured programs with defined objectives and outcomes." },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -29,7 +29,7 @@ export const questions = [
       { id: 'A', text: "A. Through personal networks and one-on-one relationships" },
       { id: 'B', text: "B. By creating lasting connections between educational institutions and employers" },
       { id: 'C', text: "C. Through data-driven matching and systematic mapping of opportunities" },
-      { id: 'D', text: "D. Via cohort-based programs and structured group experiences" }
+      { id: 'D', text: "D. Via cohort-based programs and structured group experiences" },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -40,7 +40,7 @@ export const questions = [
       { id: 'A', text: "A. We immediately step in to help, regardless of the type of challenge." },
       { id: 'B', text: "B. We activate our institutional partnerships to find solutions." },
       { id: 'C', text: "C. We analyze their situation and provide data-informed recommendations." },
-      { id: 'D', text: "D. We connect them with specific resources within our program scope." }
+      { id: 'D', text: "D. We connect them with specific resources within our program scope." },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -51,7 +51,7 @@ export const questions = [
       { id: 'A', text: "A. Through the strength and longevity of individual relationships" },
       { id: 'B', text: "B. By the sustainability of the pathways we've created between institutions" },
       { id: 'C', text: "C. Through data analytics and outcome tracking" },
-      { id: 'D', text: "D. By measuring specific program completion and achievement metrics" }
+      { id: 'D', text: "D. By measuring specific program completion and achievement metrics" },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -62,7 +62,7 @@ export const questions = [
       { id: 'A', text: "A. Training more individual mentors and building personal networks" },
       { id: 'B', text: "B. Establishing more institutional partnerships and systemic changes" },
       { id: 'C', text: "C. Improving our algorithms and expanding our data sources" },
-      { id: 'D', text: "D. Replicating our program model in new locations" }
+      { id: 'D', text: "D. Replicating our program model in new locations" },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -73,7 +73,7 @@ export const questions = [
       { id: 'A', text: "A. We invest heavily in maintaining strong personal relationships." },
       { id: 'B', text: "B. We focus on building and maintaining institutional partnerships." },
       { id: 'C', text: "C. We prioritize data systems and analytical tools." },
-      { id: 'D', text: "D. We allocate resources to specific program deliverables." }
+      { id: 'D', text: "D. We allocate resources to specific program deliverables." },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -84,7 +84,7 @@ export const questions = [
       { id: 'A', text: "A. We maintain ongoing personal connections indefinitely or as long as our participants desire." },
       { id: 'B', text: "B. They become part of our institutional network and community, perhaps as alumni or future guides for others." },
       { id: 'C', text: "C. They can continue accessing our mapping tools and resources." },
-      { id: 'D', text: "D. We track alumni outcomes through formal program channels." }
+      { id: 'D', text: "D. We track alumni outcomes through formal program channels." },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -95,7 +95,7 @@ export const questions = [
       { id: 'A', text: "A. Through direct sharing of personal networks and connections" },
       { id: 'B', text: "B. By creating lasting bridges between institutions and communities" },
       { id: 'C', text: "C. Through data-driven networking recommendations" },
-      { id: 'D', text: "D. Via structured networking events and alumni programs" }
+      { id: 'D', text: "D. Via structured networking events and alumni programs" },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -106,7 +106,7 @@ export const questions = [
       { id: 'A', text: "A. Limited by individual capacity and personal bandwidth" },
       { id: 'B', text: "B. Dependent on complex partnerships and funding structures" },
       { id: 'C', text: "C. Constrained by data quality and algorithmic limitations" },
-      { id: 'D', text: "D. Activities predetermined by fixed program parameters and goals" }
+      { id: 'D', text: "D. Activities predetermined by fixed program parameters and goals" },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -117,7 +117,7 @@ export const questions = [
       { id: 'A', text: "A. We adapt organically based on individual needs and experiences." },
       { id: 'B', text: "B. We evolve through stakeholder feedback and system-level changes." },
       { id: 'C', text: "C. We iterate based on data analysis and outcome metrics." },
-      { id: 'D', text: "D. We update our program model through structured evaluation cycles." }
+      { id: 'D', text: "D. We update our program model through structured evaluation cycles." },
       { id: 'skip', text: "N/A" }
     ]
   },
@@ -128,7 +128,7 @@ export const questions = [
       { id: 'A', text: "A. Trusted personal guide and advocate" },
       { id: 'B', text: "B. Systemic change-maker and institutional connector" },
       { id: 'C', text: "C. Evidence-based pathway illuminator" },
-      { id: 'D', text: "D. Structured program provider and skill builder" }
+      { id: 'D', text: "D. Structured program provider and skill builder" },
       { id: 'skip', text: "N/A" }
     ]
   }

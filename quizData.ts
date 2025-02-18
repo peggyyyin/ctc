@@ -6,7 +6,7 @@ export const questions = [
       { id: 'A', text: "A. We'll personally walk alongside you and help navigate whatever challenges arise." },
       { id: 'B', text: "B. We've built lasting connections between education and employers to ensure your success." },
       { id: 'C', text: "C. We'll analyze your data and suggest personalized pathways based on evidence." },
-      { id: 'D', text: "D. We offer specific programs and training to help you reach defined goals." }
+      { id: 'D', text: "D. We offer specific programs and training to help you reach defined goals." },
       { id: 'skip', text: "N/A" }
 
     ]

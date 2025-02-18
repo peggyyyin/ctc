@@ -31,7 +31,7 @@ export const generatePDF = async (elementId: string) => {
 
     const finalCanvas = document.createElement("canvas");
     finalCanvas.width = finalWidth;
-    finalCanvas.height = finalHeight;
+    finalCanvas.height = finalHeight + 40;
     const ctx = finalCanvas.getContext("2d");
 
     if (ctx) {
@@ -44,7 +44,7 @@ export const generatePDF = async (elementId: string) => {
 
       // Draw logo at the bottom center
       const logoX = (finalWidth - logoWidth) / 2;
-      const logoY = finalHeight - logoHeight - padding;
+      const logoY = finalHeight - logoHeight;
       ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
     }
 

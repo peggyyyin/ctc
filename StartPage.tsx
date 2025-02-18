@@ -38,10 +38,10 @@ export default function StartPage({ onStart, onBack }: StartPageProps) {
       </CardContent>
       <CardFooter className="flex flex-col sm:flex-row gap-4">
       <Link href="https://flipbooklets.com/pdfflipbooklets/crossing-the-canyon#page1" target="_blank" className="w-full sm:flex-1">
-            <Button className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">Explore Research</Button>
+            <Button className="w-full bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">Explore Research</Button>
       </Link>
         <Button 
-        onClick={onStart} className="flex-1 bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">
+        onClick={onStart} className="w-full bg-[#40c7cc] hover:bg-[#40c7cc]/90 text-white">
           Start Now
         </Button>
       </CardFooter>

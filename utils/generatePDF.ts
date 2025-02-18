@@ -17,21 +17,38 @@ export const generatePDF = async (elementId: string) => {
       backgroundColor: "#ffffff",
     });
 
-    const ctx = canvas.getContext("2d");
+    const logo = new Image();
+    logo.src = "/TFA_logo.png"; // Ensure this file is in the public folder
+    await new Promise((resolve) => {
+      logo.onload = resolve;
+    });
+
+    const logoWidth = 200;
+    const logoHeight = 100;
+    const padding = 40;
+    const finalWidth = canvas.width;
+    const finalHeight = canvas.height + logoHeight + padding * 2;
+
+    const finalCanvas = document.createElement("canvas");
+    finalCanvas.width = finalWidth;
+    finalCanvas.height = finalHeight;
+    const ctx = finalCanvas.getContext("2d");
+
     if (ctx) {
-      const logo = new Image();
-      logo.src = "/TFA_logo.png"; // Ensure this file is in the public folder
-      await new Promise((resolve) => {
-        logo.onload = resolve;
-      });
-      const logoWidth = 200;
-      const logoHeight = 100;
-      const logoX = (canvas.width - logoWidth) / 2;
-      const logoY = canvas.height - logoHeight - 20; // Position where card footer would be
+      // Fill background color
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, finalWidth, finalHeight);
+
+      // Draw original content
+      ctx.drawImage(canvas, 0, padding);
+
+      // Draw logo at the bottom center
+      const logoX = (finalWidth - logoWidth) / 2;
+      const logoY = finalHeight - logoHeight - padding;
       ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
     }
 
-    const dataUrl = canvas.toDataURL("image/png");
+    const dataUrl = finalCanvas.toDataURL("image/png");
 
     // Trigger download
     const link = document.createElement("a");

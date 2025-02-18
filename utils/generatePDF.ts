@@ -32,7 +32,7 @@ export const generatePDF = async (elementId: string) => {
 
     const finalCanvas = document.createElement("canvas");
     finalCanvas.width = finalWidth;
-    finalCanvas.height = finalHeight + 40 + logoPadding;
+    finalCanvas.height = finalHeight + 40 + logoPadding + logoPadding + logoPadding;
     const ctx = finalCanvas.getContext("2d");
 
     if (ctx) {

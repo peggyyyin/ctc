@@ -27,9 +27,9 @@ export default function PersonalityQuiz() {
   const calculateResult = () => {
     let possibleResults: string[] = []
     if (xSum >= 0 && ySum >= 0) possibleResults.push("B")
-    if (xSum < 0 && ySum >= 0) possibleResults.push("A")
-    if (xSum < 0 && ySum < 0) possibleResults.push("C")
-    if (xSum >= 0 && ySum < 0) possibleResults.push("D")
+    if (xSum <= 0 && ySum >= 0) possibleResults.push("A")
+    if (xSum <= 0 && ySum <= 0) possibleResults.push("C")
+    if (xSum >= 0 && ySum <= 0) possibleResults.push("D")
     return possibleResults
   }
 

@@ -201,7 +201,7 @@ export default function PersonalityQuiz() {
             Download Result
           </Button>
           <Link href="https://flipbooklets.com/pdfflipbooklets/crossing-the-canyon#page1" target="_blank" className="w-full sm:flex-1">
-            <Button className="w-full bg-[#152e65] hover:bg-[#152e65]/90 text-white">Take me to the research</Button>
+            <Button className="w-full bg-[#152e65] hover:bg-[#152e65]/90 text-white">Explore the Research</Button>
           </Link>
         </CardFooter>
       </Card>

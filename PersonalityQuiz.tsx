@@ -1,3 +1,4 @@
+"use client"
 import { neon } from '@neondatabase/serverless';
 import React, { useState } from "react"
 import Link from "next/link"

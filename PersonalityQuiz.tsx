@@ -195,7 +195,8 @@ export default function PersonalityQuiz() {
             <div key={category}>
               <h3 className="text-xl font-semibold text-center mb-4">{results[category as keyof typeof results].title}</h3>
               <p className="mb-6 text-center text-base text-left sm:text-lg">{results[category as keyof typeof results].description}</p>
-              {index < resultCategories.length - 1 && <h3 className="text-lg font-semibold text-center mb-4">And you're also a...</h3>}
+              <br />
+              {index < resultCategories.length - 1 && <h3 className="text-lg font-semibold text-center mb-4">+</h3>}
             </div>
           ))}
         </CardContent>
